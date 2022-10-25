@@ -34,32 +34,24 @@
 # define STD_ON       1u
 # define STD_OFF      0u
 
-#ifdef __cplusplus
-  #define   __I     volatile             /*!< Defines 'read only' permissions */
-#else
-  #define   __I     volatile const       /*!< Defines 'read only' permissions */
-#endif
-#define     __O     volatile             /*!< Defines 'write only' permissions */
-#define     __IO    volatile             /*!< Defines 'read / write' permissions */
-
-/* following defines should be used for structure members */
-#define     __IM     volatile const      /*! Defines 'read only' structure member permissions */
-#define     __OM     volatile            /*! Defines 'write only' structure member permissions */
-#define     __IOM    volatile            /*! Defines 'read / write' structure member permissions */
-
 /**********************************************************************************************************************
  *  GLOBAL DATA TYPES AND STRUCTURES
  *********************************************************************************************************************/
 
-typedef uint8_t Std_ReturnType;
+typedef uint8 Std_ReturnType;
 #define E_OK          0u
 #define E_NOT_OK      1u
 
 /**********************************************************************************************************************
  *  GLOBAL DATA PROTOTYPES
  *********************************************************************************************************************/
-
- 
+#define SET_BIT(reg,bit)               reg|=(1<<bit)
+#define CLR_BIT(reg,bit)               reg&=~(1<<bit)
+#define TOGGLE_BIT(reg,bit)            reg^=(1<<bit)
+#define READ_BIT(reg,bit)              (reg&(1<<bit))>>bit
+#define IS_BIT_CLR(reg,bit)            !((reg&(1<<bit))>>bit) 
+#define BIT_BANDING(bit_band_base,byte_offset,bit_number)    *(uint32*)(bit_band_base+(byte_offset*32)+(bit_number*4))
+#define NULL                           (void*)0
 /**********************************************************************************************************************
  *  GLOBAL FUNCTION PROTOTYPES
  *********************************************************************************************************************/

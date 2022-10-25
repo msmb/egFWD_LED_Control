@@ -1,0 +1,10 @@
+{
+    "files.associations": {
+        "systick.h": "c",
+        "intctrl.h": "c",
+        "dio.h": "c",
+        "std_types.h": "c",
+        "led.h": "c",
+        "gpt.h": "c"
+    }
+}
